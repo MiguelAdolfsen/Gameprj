@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using FirstGame.NewFolder;
 
 namespace FirstGame;
 
@@ -8,18 +9,17 @@ public class Game1 : Game
 {
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
+    private Map map;
 
     public Game1()
     {
         _graphics = new GraphicsDeviceManager(this);
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
-<<<<<<< HEAD
         Window.Title = "First Game";
-=======
 
         Window.AllowUserResizing = true;
->>>>>>> 8cc4e818cfe516713003645a001fbe978b00f1b4
+
     }
 
     protected override void Initialize()
@@ -33,7 +33,13 @@ public class Game1 : Game
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-        // TODO: use this.Content to load your game content here
+
+
+        // Replace "Tileset" with the actual asset name of your tileset image.
+        Texture2D tileset = Content.Load<Texture2D>("Tileset");
+
+        // Create your map object, e.g. a 20x20 grid.
+        map = new Map(20, tileset);
     }
 
     protected override void Update(GameTime gameTime)
@@ -50,7 +56,9 @@ public class Game1 : Game
     {
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
-        // TODO: Add your drawing code here
+        _spriteBatch.Begin();
+        map.Draw(_spriteBatch);
+        _spriteBatch.End();
 
         base.Draw(gameTime);
     }
