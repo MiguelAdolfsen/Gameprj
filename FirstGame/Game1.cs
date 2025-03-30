@@ -14,7 +14,12 @@ public class Game1 : Game
         _graphics = new GraphicsDeviceManager(this);
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
+<<<<<<< HEAD
         Window.Title = "First Game";
+=======
+
+        Window.AllowUserResizing = true;
+>>>>>>> 8cc4e818cfe516713003645a001fbe978b00f1b4
     }
 
     protected override void Initialize()
